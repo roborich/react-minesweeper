@@ -1,0 +1,14 @@
+{
+    "include": [
+        "./src/*"
+    ],
+    "compilerOptions": {
+        "target": "es2017",
+        "lib": [
+            "dom",
+            "es2015",
+            "es2017"
+        ],
+        "jsx": "react"
+    }
+}

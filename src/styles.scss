@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+$highlight: #fff;
+$background: #BBB;
+$shadow: #777;
+
+@keyframes shake {
+
+  0% {
+    --x: 5px;
+  }
+  10% {
+    --y: 5px;
+  }
+  40% {
+    --x: -5px;
+  }
+  50% {
+    --y: -5px;
+  }
+  100% {
+    --x: 0;
+    --y: 0;
+  }
+}
+
+.game {
+  font-family: sans-serif;
+  font-family: 'Press Start 2P';
+  text-align: center;
+
+  &--over {
+    .board {
+      --x: 10px;
+      --y: 0;
+      transition: transform 0.1s ease;
+      transform: translateX(var(--x)) translateY(var(--y));
+      animation: shake 0.2s linear;
+    }
+  }
+}
+.header {
+  border: solid 4px $shadow;
+  border-bottom-color: $highlight;
+  border-right-color: $highlight;
+  padding: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  font-size: 24px;
+  line-height: 32px;
+}
+.board {
+  border: solid 4px $highlight;
+  border-bottom-color: $shadow;
+  border-right-color: $shadow;
+  padding: 8px;
+  background: $background;
+  background-image: linear-gradient( 35deg,
+    darken($background, 5%), 
+    lighten($background, 5%)
+  );
+  display: inline-block;
+  box-shadow: 2px 3px 5px rgba(black, 0.25);
+}
+.mine-field {
+  display: grid;
+  grid-template-columns: repeat(var(--width), 1fr);
+  border: solid 4px $shadow;
+  border-bottom-color: $highlight;
+  border-right-color: $highlight;
+}
+.square {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  border: solid 4px $highlight;
+  border-bottom-color: $shadow;
+  border-right-color: $shadow;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 24px;
+  font-size: 16px;
+  vertical-align: top;
+  text-align: center;
+  &-cleared {
+    border: none;
+    background: $background;
+    border: solid 1px #888;
+    cursor: default;
+  }
+
+}
+.flag {
+  display: block;
+  line-height: 24px - 8px;
+  font-size: 16px - 4px;
+  position: relative;
+}
+
+button {
+  background-image: linear-gradient( 35deg,
+    darken($background, 5%), 
+    lighten($background, 5%)
+  );
+  font-family: inherit;
+  border: solid 4px $highlight;
+  border-bottom-color: $shadow;
+  border-right-color: $shadow;
+  padding: 8px 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.square-1 {
+  color: blue;
+}
+.square-2 {
+  color: green;
+}
+.square-3 {
+  color: red;
+}
+.square-4 {
+  color: darkblue;
+}
+.square-5 {
+  color: darkred;
+}
+.square-6 {
+  color: turquoise;
+}
+.square-7 {
+  color: black;
+}
+.square-8 {
+  color: $shadow;
+}
+
+
+.numbers {
+  display: inline-block;
+}
+
+
+.title {
+  flex: 1 1;
+  line-height: 32px;
+}

@@ -1,0 +1,69 @@
+$on: red;
+$off: rgba($on, 0.1);
+
+$stroke: 4px;
+$size: 14px;
+
+.numbers {
+  background: #333;
+}
+.seven-segment {
+  display: inline-block;
+  height: $size * 2;
+  width: $size;
+  line-height: $size * 2;
+  color: red;
+  box-sizing: border-box;
+  margin: $stroke / 2;
+  &__top,
+  &__bottom {
+    border: solid $stroke $off;
+    height: $size;
+    width: $size;
+    box-sizing: border-box;
+  }
+  &__top {
+    border-bottom-width: $stroke / 2;
+  }
+  &__bottom {
+    border-top-width: $stroke / 2;
+  }
+  $pallet: $off, $on;
+  $segmentMap: 
+    1 1 1 1 1 1 0,
+    0 1 1 0 0 0 0,
+    1 1 0 1 1 0 1,
+    1 1 1 1 0 0 1,
+    0 1 1 0 0 1 1,
+    1 0 1 1 0 1 1,
+    1 0 1 1 1 1 1,
+    1 1 1 0 0 0 0,
+    1 1 1 1 1 1 1,
+    1 1 1 1 0 1 1;
+
+  @function getColor($num, $segment) {
+    $row: nth($segmentMap, $num + 1);
+    $state: nth($row, $segment);
+    @return nth($pallet, $state + 1);
+  }
+  @for $i from 0 through 9 {
+    &--#{$i} {
+      
+      .seven-segment__top {
+        border-top-color: getColor($i, 1);
+        border-right-color: getColor($i, 2);
+        border-left-color: getColor($i, 6);
+        border-bottom-color: getColor($i, 7);
+      }
+      .seven-segment__bottom {
+        border-right-color: getColor($i, 3);
+        border-bottom-color: getColor($i, 4);
+        border-left-color: getColor($i, 5);
+        border-top-color: getColor($i, 7);
+        
+      }
+      
+    }
+  }
+}
+
