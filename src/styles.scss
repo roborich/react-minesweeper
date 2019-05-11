@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 $highlight: #fff;
-$background: #BBB;
+$background: #bbb;
 $shadow: #777;
 
 @keyframes shake {
-
   0% {
     --x: 5px;
   }
@@ -47,7 +46,7 @@ $shadow: #777;
   margin-bottom: 8px;
   display: flex;
   font-size: 24px;
-  line-height: 32px;
+  line-height: 24px;
 }
 .board {
   border: solid 4px $highlight;
@@ -55,8 +54,9 @@ $shadow: #777;
   border-right-color: $shadow;
   padding: 8px;
   background: $background;
-  background-image: linear-gradient( 35deg,
-    darken($background, 5%), 
+  background-image: linear-gradient(
+    35deg,
+    darken($background, 5%),
     lighten($background, 5%)
   );
   display: inline-block;
@@ -88,7 +88,6 @@ $shadow: #777;
     border: solid 1px #888;
     cursor: default;
   }
-
 }
 .flag {
   display: block;
@@ -98,8 +97,9 @@ $shadow: #777;
 }
 
 button {
-  background-image: linear-gradient( 35deg,
-    darken($background, 5%), 
+  background-image: linear-gradient(
+    35deg,
+    darken($background, 5%),
     lighten($background, 5%)
   );
   font-family: inherit;
@@ -136,11 +136,9 @@ button {
   color: $shadow;
 }
 
-
 .numbers {
   display: inline-block;
 }
-
 
 .title {
   flex: 1 1;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Numbers.scss';
 
-const SevenSegment = ({ number }) => {
+const SevenSegment = ({ number }: { number: number }) => {
   return (
     <div className={`seven-segment seven-segment--${number}`}>
       <div className="seven-segment__top" />
@@ -9,7 +9,7 @@ const SevenSegment = ({ number }) => {
     </div>
   );
 };
-export default ({ number }) => {
+export default ({ number }: { number: number }) => {
   const numbers = String(Math.min(999, number))
     .padStart(3, '0')
     .split('')

@@ -7,9 +7,8 @@ interface TimerParams {
 }
 
 export default ({ startTime }: TimerParams) => {
-  const isActive = startTime !== undefined;
   const getElapsed = () =>
-    isActive
+    startTime !== undefined
       ? Math.round((new Date().getTime() - startTime.getTime()) / 1000)
       : 0;
 

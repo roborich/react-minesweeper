@@ -21,29 +21,31 @@ const emoji = {
   win: '😎',
   mineCount: ['😊', '😚', '😐', '🤔', '😕', '😯', '😦', '😧', '😨', '😱'],
 };
+
+const future = new Date(new Date().getTime() + 860000);
 function Game() {
   const [turn, setTurn] = React.useState(0);
-  const [startTime, setStartTime] = React.useState(undefined);
+  const [startTime, setStartTime] = React.useState<Date>(future);
   const [field, setField] = React.useState(
     createMinefield(WIDTH, HEIGHT, MINE_COUNT),
   );
   const unFlagged = unflaggedCount(field, MINE_COUNT);
   const [gameTitle, setGameTitle] = React.useState(emoji.default);
   const newGame = () => {
-    setStartTime(undefined);
+    setStartTime(future);
     setGameTitle(emoji.default);
     setField(createMinefield(WIDTH, HEIGHT, MINE_COUNT));
   };
-  const handleRightClick = index => {
+  const handleRightClick = (index: number) => {
     const newField = field.slice();
     newField[index].isFlagged = !newField[index].isFlagged;
     setField(newField);
   };
-  const handleClick = (index, isFlag: boolean = false) => {
+  const handleClick = (index: number, isFlag: boolean = false) => {
     if (isFlag) {
       return handleRightClick(index);
     }
-    if (startTime === undefined) {
+    if (startTime === future) {
       setStartTime(new Date());
     }
     const newField = field.slice();
@@ -66,7 +68,7 @@ function Game() {
     <div
       className={`game game--${gameTitle === emoji.lose ? 'over' : 'active'}`}
     >
-      <div class="title">
+      <div className="title">
         Minesweeper
         <button onClick={newGame}>New Game</button>
       </div>

@@ -32,7 +32,7 @@ const getNeighbors = (
       }
       return index + yOffset * width + xOffset;
     })
-    .filter(neighbor => neighbor !== undefined);
+    .filter(neighbor => neighbor !== undefined) as number[];
 };
 
 export const createMinefield = (

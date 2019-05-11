@@ -7,7 +7,7 @@ interface SquareProps {
   coordinate: number;
   onClick: (coordinate: number, isFlag?: boolean) => void;
 }
-const wait = ms => new Promise(r => setTimeout(r, ms));
+const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 export default ({ squareData, coordinate, onClick }: SquareProps) => {
   const { isCleared, isFlagged, hasMine, neighborCount } = squareData;
@@ -44,7 +44,7 @@ export default ({ squareData, coordinate, onClick }: SquareProps) => {
     clearLongPress();
     onClick(coordinate);
   };
-  const rightClick = e => {
+  const rightClick = (e: any) => {
     e.preventDefault();
     if (isCleared) {
       return;
